@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Parking</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Parking.styles.css" asp-append-version="true" />
+    <style>
+
+        body {
+            background: linear-gradient(135deg, #000000, #222222); 
+            color: whitesmoke;
+            font-family: 'Arial', sans-serif; 
+        }
+
+        .navbar {
+            background-color: #222222;
+            padding: 1rem;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
+        }
+
+        .navbar-brand, .nav-link {
+            color: whitesmoke !important;
+            font-size: 1.25rem; 
+            font-weight: bold;
+        }
+
+            .nav-link:hover {
+                color: whitesmoke !important; 
+                text-decoration: underline; 
+            }
+
+        main {
+            padding: 2rem;
+            background-color: #1c1c1c;
+            border-radius: 8px; 
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        h1, h2 {
+            color: #whitesmoke; 
+        }
+
+        footer {
+            background-color: #333333; 
+            color: whitesmoke;
+            padding: 0.5rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+            footer a {
+                color: whitesmoke !important; 
+            }
+
+                footer a:hover {
+                    color: whitesmoke !important; 
+                    text-decoration: none; 
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-center">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Free Dictionary API</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Park" asp-action="Index">Parking Management</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Parking - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

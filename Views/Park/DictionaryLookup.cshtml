@@ -1,0 +1,75 @@
+﻿@model Parking.Models.DictionaryResponseModel
+
+@{
+    ViewData["Title"] = "Dictionary Lookup";
+}
+
+<h1>@Model.Word</h1>
+
+@if (Model.Phonetics != null && Model.Phonetics.Any())
+{
+    <h3>Phonetics:</h3>
+    <ul>
+        @foreach (var phonetic in Model.Phonetics)
+        {
+            <li>
+                @phonetic.Text
+                @if (!string.IsNullOrWhiteSpace(phonetic.Audio))
+                {
+                    <br />
+                    <audio controls>
+                        <source src="@phonetic.Audio" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                }
+            </li>
+        }
+    </ul>
+}
+
+@if (Model.Meanings != null && Model.Meanings.Any())
+{
+    <h3>Meanings:</h3>
+    @foreach (var meaning in Model.Meanings)
+    {
+        <h4>@meaning.PartOfSpeech</h4>
+        <ul>
+            @foreach (var definition in meaning.Definitions)
+            {
+                <li>
+                    <strong>Definition:</strong> @definition.Definition
+                    @if (!string.IsNullOrWhiteSpace(definition.Example))
+                    {
+                        <br />
+
+                        <strong>Example:</strong> <i>@definition.Example</i>
+                    }
+                    @if (definition.Synonyms != null && definition.Synonyms.Any())
+                    {
+                        <br />
+
+                        <strong>Synonyms:</strong> @string.Join(", ", definition.Synonyms)
+                    }
+                    @if (definition.Antonyms != null && definition.Antonyms.Any())
+                    {
+                        <br />
+
+                        <strong>Antonyms:</strong> @string.Join(", ", definition.Antonyms)
+                    }
+                </li>
+            }
+        </ul>
+    }
+}
+
+
+@if (Model.SourceUrls != null && Model.SourceUrls.Any())
+{
+    <h3>Sources:</h3>
+    <ul>
+        @foreach (var sourceUrl in Model.SourceUrls)
+        {
+            <li><a href="@sourceUrl" target="_blank">@sourceUrl</a></li>
+        }
+    </ul>
+}

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Parking.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-white">Parking Users</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+
+<table class="table table-dark table-hover table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.plateNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.colorCar)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.plateNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.colorCar)
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Details" class="btn btn-info btn-sm">Car Details</a>
+                    <a asp-action="Delete" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
